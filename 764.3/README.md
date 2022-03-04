@@ -6,4 +6,6 @@
 - Problem D: Unsolved
 - Problem E: Unsolved
 - Problem F: Unsolved
-- Problem G: Unsolved
+- Problem G:
+  - 位运算
+  - 并查集
