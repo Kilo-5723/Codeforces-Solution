@@ -1,17 +1,13 @@
 #include <cstdio>
 #include <iostream>
 using namespace std;
-
 const int maxn = 2e5 + 5;
-
 struct edge {
   int u, v, w;
 };
 edge e[maxn];
-
 int f[maxn];
 int ff(int u) { return f[u] == u ? u : f[u] = ff(f[u]); }
-
 int main() {
   int tt;
   scanf("%d", &tt);
