@@ -24,11 +24,6 @@ int main() {
   int k = 0;
   for (int i = n; i > 1; i--) {
     while (!check(i, n)) {
-      // for (int j=1;j<=n;j++){
-      //   printf("%d:\n",j);
-      //   for (auto v:st[j]) printf("%d ",v);
-      //   puts("");
-      // }
       for (int j = 1; j < i; j++) {
         ans[k][j - 1] = *st[j].begin();
         st[j + 1].insert(*st[j].begin());

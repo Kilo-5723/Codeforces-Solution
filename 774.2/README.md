@@ -1,10 +1,16 @@
-# Codeforces Round #774 (Div. 2)
+# [Codeforces Round #774 (Div. 2)](https://codeforces.com/contest/1646)
 
 - Problem A:
 
+  - 签到
+
 - Problem B:
 
+  - 签到
+
 - Problem C:
+
+  - 签到
 
 - Problem D:
 
@@ -12,9 +18,9 @@
 
 - Problem E:
 
-  - 无
-  
-- Problem F:
+  - 签到
+
+- Problem F: Unsolved
 
 
 # Problem A
