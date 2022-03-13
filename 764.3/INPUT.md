@@ -23,7 +23,7 @@
   - 位运算
   - 并查集
 
-# Problem A233451
+# Problem A
 
 题意：
 
@@ -31,7 +31,9 @@
 
 题解：
 
-显然每次选不等于最大值的位置 $+1$，操作次数即为序列的 $\max\left(a_i\right) - \min(a_i)$。
+显然每次选不等于最大值的位置 $+1$，操作次数即为序列的 $\max\left(a_i\right) - \min\left(a_i\right)$。
+
+# Problem B
 
 
 
