@@ -23,15 +23,15 @@
   - 位运算
   - 并查集
 
-# Problem A2
+# Problem A
 
 题意：
 
-给出序列 $\{a_n\}$，每次操作可以选一些位置 $+1$，求让整个序列相同需要的最少操作次数。
+给出序列 <img src="svgs/b0ac02d8b6d2a12a2b4188c8739b974f.svg?invert_in_darkmode" align=middle width=34.07551124999999pt height=24.65753399999998pt/>，每次操作可以选一些位置 <img src="svgs/c11fe0cea175e1b787b3403c763dc9b0.svg?invert_in_darkmode" align=middle width=21.00464354999999pt height=21.18721440000001pt/>，求让整个序列相同需要的最少操作次数。
 
 题解：
 
-显然每次选不等于最大值的位置 $+1$，操作次数即为序列的 $\max\left(a_i\right) - \min(a_i)$。
+显然每次选不等于最大值的位置 <img src="svgs/c11fe0cea175e1b787b3403c763dc9b0.svg?invert_in_darkmode" align=middle width=21.00464354999999pt height=21.18721440000001pt/>，操作次数即为序列的 <img src="svgs/e01602ac7abb93919b7f0f623d7a0026.svg?invert_in_darkmode" align=middle width=134.71664744999998pt height=24.65753399999998pt/>。
 
 
 
