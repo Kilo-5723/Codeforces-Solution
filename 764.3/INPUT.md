@@ -1,20 +1,39 @@
 # Codeforces Round #764 (Div. 3)
 
-- Problem A: Unsolved
+- Problem A:
+  - Solved. 00:03 (+)
 
-- Problem B: Unsolved
+- Problem B:
+  - Solved. 00:08 (+)
 
-- Problem C: Unsolved
+- Problem C:
+  - Solved. 00:16 (+)
 
-- Problem D: Unsolved
+- Problem D:
+  - Solved. 00:26 (+)
 
-- Problem E: Unsolved
+- Problem E:
+  - Solved. 01:10 (+2)
 
-- Problem F: Unsolved
+- Problem F:
+  - Solved. 01:30 (+)
 
 - Problem G:
+  - Solved. 01:30 (+)
   - 位运算
   - 并查集
+
+# Problem A
+
+题意：
+
+给出序列 $\{a_n\}$，每次操作可以选一些位置 $+1$，求让整个序列相同需要的最少操作次数。
+
+题解：
+
+显然每次选不等于最大值的位置 $+1$，操作次数即为序列的 $\max(a_i) - \min(a_i)$。
+
+
 
 # Problem G
 
