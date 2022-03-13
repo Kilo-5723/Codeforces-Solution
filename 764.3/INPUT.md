@@ -23,7 +23,7 @@
   - 位运算
   - 并查集
 
-# Problem A233
+# Problem A2334
 
 题意：
 
