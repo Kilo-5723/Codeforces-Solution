@@ -68,13 +68,10 @@ void match(int res[]) {
     for (int i = 0; i < n; i++)
       if (!vis[i])
         if (dfs(i, 2 * n - 1)) vis[i] = true;
-  // n--;
   for (int i = 0; i < n; i++)
     for (int j = 0; j < n; j++) {
       if (gra[i][j] == -1) res[i] = j;
     }
-  // for (int i = 0; i < n; i++) printf("%d ", res[i]);
-  // puts("");
 }
 }  // namespace Dinic
 
