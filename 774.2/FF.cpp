@@ -1,84 +1,39 @@
+#include <cassert>
 #include <cstdio>
 #include <iostream>
-#include <queue>
+#include <set>
+#include <unordered_map>
 #include <vector>
 using namespace std;
+typedef pair<int, int> pii;
 const int inf = 1e9;
 const int maxn = 105;
-
-namespace Dinic {
-static int gra[maxn][maxn];
-static int dep[maxn * 2], vis[maxn * 2];
-int n;
-int dfs(int u, int t) {
-  if (u < n) {
-    for (int v = n; v < 2 * n; v++)
-      if (gra[u][v - n] == 1 && dep[v] == dep[u] + 1 && dfs(v, t)) {
-        gra[u][v - n] = -1;
-        return true;
-      }
-  } else {
-    if (!vis[u]) return vis[u] = true;
-    for (int v = 0; v < n; v++)
-      if (gra[v][u - n] == -1 && dep[v] == dep[u] + 1 && dfs(v, t)) {
-        gra[v][u - n] = 1;
-        return true;
-      }
-  }
-  dep[u] = inf;
-  return false;
-}
-bool bfs(int s, int t) {
-  fill(dep, dep + 2 * n, inf);
-  queue<int> que;
-  for (int i = 0; i < n; i++)
-    if (!vis[i]) {
-      que.push(i);
-      dep[i] = 1;
-    }
-  int lim = inf;
-  while (que.size()) {
-    int u = que.front();
-    // printf("u : %d\n",u);
-    if (dep[u] > lim) break;
-    que.pop();
-    if (u < n) {
-      for (int v = n; v < 2 * n; v++)
-        if (gra[u][v - n] == 1)
-          if (dep[v] > dep[u] + 1) {
-            dep[v] = dep[u] + 1;
-            que.push(v);
-          }
-    } else {
-      if (!vis[u]) lim = dep[u];
-      for (int v = 0; v < n; v++)
-        if (gra[v][u - n] == -1)
-          if (dep[v] > dep[u] + 1) {
-            dep[v] = dep[u] + 1;
-            que.push(v);
-          }
-    }
-  }
-  // printf("lim : %d\n", lim);
-  return lim < inf / 2;
-}
-void match(int res[]) {
-  fill(vis, vis + 2 * n, false);
-  while (bfs(n - 1, 2 * n - 1))
+void match(int gra[][maxn], int n, int res[]) {
+  // static int deg[maxn * 2];
+  // fill(deg, deg + n * 2, 0);
+  // for (int i = 0; i < n; i++)
+  //   for (int j = 0; j < n; j++) {
+  //     deg[i] += gra[i][j];
+  //     deg[j + n] += gra[i][j];
+  //   }
+  for (int t = 0; t < n; t++) {
+    int u = 0, v = 0;
     for (int i = 0; i < n; i++)
-      if (!vis[i])
-        if (dfs(i, 2 * n - 1)) vis[i] = true;
-  // n--;
-  for (int i = 0; i < n; i++)
-    for (int j = 0; j < n; j++) {
-      if (gra[i][j] == -1) res[i] = j;
-    }
-  // for (int i = 0; i < n; i++) printf("%d ", res[i]);
-  // puts("");
+      for (int j = 0; j < n; j++)
+        if (gra[i][j] > gra[u][v]) {
+          u = i;
+          v = j;
+          // w = deg[i] + deg[j + n];
+        }
+    // assert(w < inf);
+    // printf("u, v, w: %d, %d, %d; %d %d\n", u, v, w, deg[u], deg[v]);
+    // deg[u] = inf;
+    // deg[v + n] = inf;
+    for (int i = 0; i < n; i++) gra[u][i] = gra[i][v] = 0;
+    res[u] = v;
+  }
 }
-}  // namespace Dinic
-
-void minor(int arr[], int pos, int n, int res[], int &sizr) {
+void minor(int arr[], int pos, int n, int *res, int &sizr) {
   // sizr = 0;
   while (~arr[pos]) {
     int val = arr[pos], stp = (val + n - pos) % n;
@@ -119,11 +74,11 @@ int main() {
       scanf("%d", &a[i][j]);
       a[i][j]--;
     }
-  // static bool gra[maxn][maxn];
+  static int gra[maxn][maxn];
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
-      fill(Dinic::gra[j], Dinic::gra[j] + n, false);
-      for (int k = i; k < n; k++) Dinic::gra[j][a[j][k]] = 1;
+      fill(gra[j], gra[j] + n, 0);
+      for (int k = i; k < n; k++) gra[j][a[j][k]]++;
     }
     // for (int i = 0; i < n; i++) {
     //   for (int j = 0; j < n; j++) printf("%d ", gra[i][j]);
@@ -131,8 +86,7 @@ int main() {
     // }
     // puts("");
     static int res[maxn];
-    Dinic::n = n;
-    Dinic::match(res);
+    match(gra, n, res);
     // for (int i = 0; i < n; i++) printf("%d ", res[i] + 1);
     // puts("");
     for (int j = 0; j < n; j++)
@@ -156,7 +110,7 @@ int main() {
     major(a[i], i, n, res);
     for (int j = 0; j < n * (n - 1); j++) {
       ans[j][(j + i) % n] = res[j];
-    }
+    }  // printf("%d ",res[j]);} puts("");
   }
   printf("%d\n", n * (n - 1));
   for (int i = 0; i < n * (n - 1); i++)

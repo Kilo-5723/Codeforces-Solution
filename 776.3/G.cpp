@@ -39,10 +39,6 @@ void solve(int s, int n, int d[], ll dp[]) {
     for (auto v : e[u])
       if (d[v] == d[u] + 1) dp[v] = (dp[v] + dp[u]) % mod;
   }
-  // for (int i = 1; i <= n; i++) printf("%d ", d[i]);
-  // puts("");
-  // for (int i = 1; i <= n; i++) printf("%lld ", dp[i]);
-  // puts("");
 }
 int main() {
   int tt;

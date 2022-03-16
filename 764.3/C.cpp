@@ -15,14 +15,11 @@ int main() {
     for (int i = 0; i < n; i++) {
       int t;
       scanf("%d", &t);
-      // printf("%d -> ", t);
-      // printf("here %d\n", t);
       while ((t > n) || vis[t]) t >>= 1;
       if (!t)
         flg = false;
       else
         vis[t] = true;
-      // printf("%d\n", t);
     }
     puts(flg ? "YES" : "NO");
   }
