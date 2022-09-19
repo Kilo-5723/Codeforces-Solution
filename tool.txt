@@ -1,6 +1,0 @@
-pip3 install readme2tex -i https://pypi.tuna.tsinghua.edu.cn/simple
-python3 -m readme2tex --nocdn --output README.md INPUT2.md
-python -m readme2tex --nocdn --output README.md INPUT.md
-python3 -m readme2tex --output README.md --branch svgs --usepackage tikz INPUT.md --add-git-hook
-python -m readme2tex --output README.md --branch main --usepackage tikz IMPUT.md --add-git-hook
-python3 -m readme2tex --output README.md --branch svgs --usepackage tikz INPUT.md --add-git-hook

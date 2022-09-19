@@ -12,8 +12,6 @@
   - NULL
 - Problem F:
   - NULL
-- Problem G:
-  - NULL
 
 # Problem A
 
@@ -74,14 +72,3 @@ xxx
 题解：
 
 xxx
-
-# Problem G
-
-题意：
-
-xxx
-
-题解：
-
-xxx
-
