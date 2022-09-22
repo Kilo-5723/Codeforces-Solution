@@ -1,17 +1,6 @@
-# Codeforces Round #xxx (Div. x)
+# Codeforces Round #821 (Div. 2)
 
-- Problem A:
-  - NULL
-- Problem B:
-  - NULL
-- Problem C:
-  - NULL
-- Problem D:
-  - NULL
-- Problem E:
-  - NULL
-- Problem F:
-  - NULL
+<img src="svgs/87181ad2b235919e0785dee664166921.svg?invert_in_darkmode" align=middle width=45.69716744999999pt height=22.465723500000017pt/>
 
 # Problem A
 

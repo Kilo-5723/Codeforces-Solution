@@ -1,25 +1,12 @@
-# Codeforces Round #xxx (Div. x)
+# Codeforces Round #821 (Div. 2)
 
-Trial: $\LaTeX$
-
-- Problem A:
-  - NULL
-- Problem B:
-  - NULL
-- Problem C:
-  - NULL
-- Problem D:
-  - NULL
-- Problem E:
-  - NULL
-- Problem F:
-  - NULL
+$\LaTeX$
 
 # Problem A
 
 题意：
 
-trial $num$ $\LaTeX$
+xxx
 
 题解：
 
