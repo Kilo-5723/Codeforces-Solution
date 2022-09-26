@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 #include <iostream>
 using namespace std;
 const int maxn = 105;
@@ -9,7 +10,7 @@ int main() {
   while (tt--) {
     int n, c;
     scanf("%d%d", &n, &c);
-    fill(cnt, cnt + maxn, 0);
+    memset(cnt, 0, sizeof(cnt));
     for (int i = 0; i < n; i++) {
       int t;
       scanf("%d", &t);

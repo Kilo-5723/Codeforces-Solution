@@ -24,7 +24,8 @@
 
 |                      Name                      | Participation |    Date    | Score | Solved |   A   |   B   |   C   |   D    |   E    |   F   |
 | :--------------------------------------------: | :-----------: | :--------: | :---: | :----: | :---: | :---: | :---: | :----: | :----: | :---: |
-| [Codeforces Round #822 (Div. 2)](./Div.2/822/) |     Star      | 2022.09.23 | 
+| [Codeforces Round #823 (Div. 2)](./Div.2/823/) |     Star      | 2022.09.25 | 4846  |  4/6   |   O   |   O   |   O   |   O    |   !y    |   .   |
+| [Codeforces Round #822 (Div. 2)](./Div.2/822/) |     Star      | 2022.09.23 | 5348  |  6/6   |   O   |   O   |   O   |   O    |   O    |   Ø   |
 | [Codeforces Round #821 (Div. 2)](./Div.2/821/) |     Star      | 2022.09.19 | 4239  |  6/6   |   O   |   O   |   O   | O \| O |   Ø    |
 | [Codeforces Round #814 (Div. 2)](./Div.2/814/) |    Upsolve    |            |       |  4/7   |   .   |   .   |   .   | O \| O |   O    |   O   |
 | [Codeforces Round #813 (Div. 2)](./Div.2/813/) |    Upsolve    |            |       |  1/7   |   .   |   .   |   O   |   .    | . \| . |   .   |

@@ -1,5 +1,5 @@
-#include <algorithm>
 #include <cstdio>
+#include <cstring>
 #include <iostream>
 using namespace std;
 const int maxn = 2e5 + 5, digit = 10;
@@ -11,7 +11,7 @@ int main() {
   while (tt--) {
     scanf("%s", s);
     int p = 0;
-    fill(cnt, cnt + digit, 0);
+    memset(cnt, 0, sizeof(cnt));
     for (int i = 0; s[i]; i++) {
       while (p && s[p - 1] > s[i]) {
         p--;
