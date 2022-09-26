@@ -1,5 +1,5 @@
 # Input files
-in.txt
+*/in.txt
 
 # Prerequisites
 *.d
@@ -33,3 +33,6 @@ in.txt
 *.exe
 *.out
 *.app
+
+# Temporal files
+tmp/*
