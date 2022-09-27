@@ -2,6 +2,8 @@
 
 ## Div. 1
 
+Trial: $\LaTeX$
+
 |                      Name                      | Participation |    Date    | Score | Solved |   A    |   B   |   C   |   D   |   E   |   F   |
 | :--------------------------------------------: | :-----------: | :--------: | :---: | :----: | :----: | :---: | :---: | :---: | :---: | :---: |
 | [Codeforces Round #814 (Div. 1)](./Div.1/814/) |    Virtual    | 2022.09.05 | 1681  |  4/7   | O \| O |   O   |   Ø   |   .   |   .   |   .   |
@@ -24,7 +26,7 @@
 
 |                      Name                      | Participation |    Date    | Score | Solved |   A   |   B   |   C   |   D    |   E    |   F   |
 | :--------------------------------------------: | :-----------: | :--------: | :---: | :----: | :---: | :---: | :---: | :----: | :----: | :---: |
-| [Codeforces Round #823 (Div. 2)](./Div.2/823/) |     Star      | 2022.09.25 | 4846  |  4/6   |   O   |   O   |   O   |   O    |   !y    |   .   |
+| [Codeforces Round #823 (Div. 2)](./Div.2/823/) |     Star      | 2022.09.25 | 4846  |  4/6   |   O   |   O   |   O   |   O    |   !    |   .   |
 | [Codeforces Round #822 (Div. 2)](./Div.2/822/) |     Star      | 2022.09.23 | 5348  |  6/6   |   O   |   O   |   O   |   O    |   O    |   Ø   |
 | [Codeforces Round #821 (Div. 2)](./Div.2/821/) |     Star      | 2022.09.19 | 4239  |  6/6   |   O   |   O   |   O   | O \| O |   Ø    |
 | [Codeforces Round #814 (Div. 2)](./Div.2/814/) |    Upsolve    |            |       |  4/7   |   .   |   .   |   .   | O \| O |   O    |   O   |

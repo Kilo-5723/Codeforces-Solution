@@ -1,1 +1,1 @@
-python -m readme2tex --output README.md --nocdn INPUT.md
+python3 -m readme2tex --output README.md --nocdn INPUT.md

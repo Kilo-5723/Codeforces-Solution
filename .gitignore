@@ -36,3 +36,4 @@
 
 # Temporal files
 tmp/*
+.vscode/*
