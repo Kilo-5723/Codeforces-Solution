@@ -2,6 +2,9 @@
 
 |                           Name                           | Participation |    Date    | Score  | Solved |   A   |   B   |   C   |   D   |   E   |   F   |   G   |   H   |
 | :------------------------------------------------------: | :-----------: | :--------: | :----: | :----: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|      [Codeforces Round #826 (Div. 3)](./Div.3/820/)      |     Star      | 2022.10.11 | 7(278) |  7/7   |   O   |   O   |   O   |   O   |   O   |   O   |   O   |
+|      [Codeforces Round #825 (Div. 2)](./Div.2/825/)      |     Star      | 2022.10.10 |  5543  |  5/6   |   O   |   O   |  O/O  |   O   |   .   |
+|            [Dytechlab Cup 2022](./Dlab/2022/)            |    Formal     | 2022.10.07 |  4158  |  5/7   |   O   |   O   |   O   |   O   |   Ø   |   .   |   .   |
 |      [Codeforces Round #824 (Div. 2)](./Div.2/824/)      |     Star      | 2022.10.02 |  4846  |  6/6   |   O   |   O   |   O   |   O   |   O   |   Ø   |
 |     [Codeforces Global Round 22](./Other/Global.22/)     |     Star      | 2022.09.30 |  7403  |  6/8   |   O   |   O   |   O   |   O   |   O   |   O   |   .   |   .   |
 |      [Educational Codeforces Round 136](./Edu/136/)      |    Virtual    | 2022.09.29 | 5(214) |  5/6   |   O   |   O   |   O   |   O   |   O   |   .   |
