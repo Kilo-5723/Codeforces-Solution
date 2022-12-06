@@ -4,9 +4,8 @@
 #include <queue>
 #include <vector>
 using namespace std;
-typedef long long ll;
 struct cplx {
-  ll x, y;
+  int x, y;
 };
 vector<pair<cplx, int>> solve(cplx a, cplx b, int x1, int y1, int x2, int y2) {
   bool flp = false;
@@ -18,18 +17,18 @@ vector<pair<cplx, int>> solve(cplx a, cplx b, int x1, int y1, int x2, int y2) {
     flp = true;
   }
   if (a.y < y1 || a.y > y2) return {};
-  int xa = a.x, xb = b.x;
+  int xa = a.x, xb = b.x, y = a.y;
   bool swp = false;
   if (xa > xb) {
     swap(xa, xb);
     swp = true;
   }
   vector<pair<cplx, int>> res;
-  if (xa < x1 && xb > x1) res.push_back({{x1, a.y}, 0});
-  if (xa < x2 && xb > x2) res.push_back({{x2, b.y}, 0});
+  if (xa < x1 && xb > x1) res.push_back({{x1, y}, 0});
+  if (xa < x2 && xb > x2) res.push_back({{x2, y}, 0});
   if (flp)
     for (auto &[cp, det] : res) swap(cp.x, cp.y);
-  if (swp && res.size() == 2) swap(res[0], res[1]);
+  if (swp) reverse(res.begin(), res.end());
   return res;
 }
 int x1, y1, x2, y2;
@@ -39,6 +38,20 @@ int id(cplx a) {
   if (a.y == y2) return 3;
   if (a.x == x1) return 4;
   return -1;
+}
+bool cmp(cplx a, cplx b) {
+  if (id(a) != id(b)) return id(a) < id(b);
+  switch (id(a)) {
+    case 1:
+      return a.x < b.x;
+    case 2:
+      return a.y < b.y;
+    case 3:
+      return a.x > b.x;
+    case 4:
+      return a.y > b.y;
+  }
+  return false;
 }
 bool outside(const cplx &a, const vector<cplx> &poly) {
   bool res = true;
@@ -58,17 +71,17 @@ void dfs(int u, const vector<vector<int>> &e, vector<bool> &vis) {
 }
 int main() {
   scanf("%d%d%d%d", &x1, &y2, &x2, &y1);
-  x1 = x1 * 2 + 1;
-  x2 = x2 * 2 - 1;
-  y1 = y1 * 2 + 1;
-  y2 = y2 * 2 - 1;
+  x1 = x1 * 3 + 1;
+  x2 = x2 * 3 - 1;
+  y1 = y1 * 3 + 1;
+  y2 = y2 * 3 - 1;
   int n;
   scanf("%d", &n);
   vector<cplx> a(n);
   for (int i = 0; i < n; i++) {
-    scanf("%lld%lld", &a[i].x, &a[i].y);
-    a[i].x *= 2;
-    a[i].y *= 2;
+    scanf("%d%d", &a[i].x, &a[i].y);
+    a[i].x *= 3;
+    a[i].y *= 3;
   }
   a.push_back(a[0]);
   vector<pair<cplx, int>> crs;
@@ -78,49 +91,25 @@ int main() {
     auto tmp = solve(a[i], a[i + 1], x1, y1, x2, y2);
     crs.insert(crs.end(), tmp.begin(), tmp.end());
   }
-  // for (auto [c, d] : crs) printf("(%lld,%lld):%d ", c.x, c.y, d);
-  // puts("");
   if (!crs.size()) {
     bool flg = true;
-    for (auto [x, y] : a)
-      if (x > x1 && x < x2 && y > y1 && y < y2) {
-        puts("1");
-        return 0;
-      }
-    printf("%d\n", 1 - outside({x1, y1}, a));
+    if (a[0].x > x1 && a[0].x < x2 && a[0].y > y1 && a[0].y < y2)
+      puts("1");
+    else
+      printf("%d\n", 1 - outside({x1, y1}, a));
     return 0;
   }
+  n = crs.size();
   if (a[0].x > x1 && a[0].x < x2 && a[0].y > y1 && a[0].y < y2) {
     crs.push_back(crs[0]);
     crs.erase(crs.begin());
   }
-  for (int i = 0; i < crs.size(); i++) {
-    crs[i].second = i >> 1;
-  }
-  // for (auto [c, d] : crs) printf("(%lld,%lld):%d ", c.x, c.y, d);
-  // puts("");
+  for (int i = 0; i < n; i++) crs[i].second = i >> 1;
   sort(crs.begin(), crs.end(), [&](pair<cplx, int> a, pair<cplx, int> b) {
-    auto [ca, da] = a;
-    auto [cb, db] = b;
-    if (id(ca) != id(cb)) return id(ca) < id(cb);
-    switch (id(ca)) {
-      case 1:
-        return ca.x < cb.x;
-      case 2:
-        return ca.y < cb.y;
-      case 3:
-        return ca.x > cb.x;
-      case 4:
-        return ca.y > cb.y;
-    }
-    return false;
+    return cmp(a.first, b.first);
   });
-  // for (auto [c, d] : crs) printf("(%lld,%lld):%d ", c.x, c.y, d);
-  // puts("");
-  n = crs.size();
-  int m = n / 2;
   vector<vector<int>> e(n);
-  vector<int> las(m, -1);
+  vector<int> las(n / 2, -1);
   for (int i = 0; i < n; i++) {
     auto &j = las[crs[i].second];
     if (~j) {
@@ -132,9 +121,8 @@ int main() {
       j = i;
     }
   }
-  vector<bool> vis(n);
+  vector<bool> vis(n, false);
   int ans = 0;
-  // cout << outside({x1, y1}, a) << endl;
   for (int i = outside({x1, y1}, a); i < n; i += 2)
     if (!vis[i]) {
       ans++;
