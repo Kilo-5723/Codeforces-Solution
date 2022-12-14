@@ -1,6 +1,10 @@
 # Input files
 in.txt
 
+# Library Path
+
+template
+
 # Prerequisites
 *.d
 
