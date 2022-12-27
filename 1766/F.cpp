@@ -2,6 +2,7 @@
 #include <iostream>
 
 using namespace std;
+#include "../template/graph/costflow.h"
 #include "../template/graph/maxflow.h"
 using maxflow::cost_t;
 using maxflow::flow_t;
@@ -47,18 +48,12 @@ int main() {
     }
     v /= 2;
   }
-  // for (auto e : edge)
-  //   cout << e.from << ' ' << e.to << ' ' << e.low << ' ' << e.cap << ' '
-  //        << e.cost << ' ' << e.flow << endl;
-  // for (int i = 1; i <= n; i++) cout << excess[i] << ' ';
-  // cout << endl;
-  // cout << totc << endl;
-  auto [feasible, detf, detc] =
-      maxflow::feasiflow(edge, excess, 1, n, true, true, 0);
-  if (!feasible) {
+  auto res = maxflow::feasiflow(edge, excess, 1, n, true, true, 0);
+  if (!res) {
     puts("Impossible");
     return 0;
   }
+  auto [detf, detc] = *res;
   puts("Possible");
   flow += detf;
   totc += detc;

@@ -18,6 +18,7 @@ int main() {
     switch (t) {
       case 0:
         ans += (i + 1LL) * (n - i);
+        nxt = dp;
         break;
       case 1:
         nxt[0] += cnt;
