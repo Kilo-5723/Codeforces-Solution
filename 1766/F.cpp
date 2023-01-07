@@ -1,21 +1,19 @@
 #include <cstdio>
 #include <iostream>
 
-using namespace std;
 #include "../template/graph/costflow.h"
-#include "../template/graph/maxflow.h"
-using maxflow::cost_t;
-using maxflow::flow_t;
-using maxflow::FlowEdge;
+
+using namespace std;
+using namespace costflow;
 int main() {
   int n, m;
   scanf("%d%d", &n, &m);
   vector<flow_t> excess(n + 1);
   flow_t flow = 0;
   cost_t totc = 0;
-  vector<FlowEdge> edge;
+  vector<CostEdge> edge;
   vector<int> flg, flg2;
-  while (m--) {
+  for (int i = 0; i < m; i++) {
     int x, y, c, w;
     scanf("%d%d%d%d", &x, &y, &c, &w);
     flg.push_back(c & 1);
@@ -26,16 +24,7 @@ int main() {
     }
     w *= 2;
     c /= 2;
-    flg2.push_back(w > 0);
-    if (w > 0)
-      edge.push_back(FlowEdge(x, y, w, c, 0, 0));
-    else {
-      // cout << totc << endl;
-      totc += w * c;
-      excess[x] -= c * 2;
-      excess[y] += c * 2;
-      edge.push_back(FlowEdge(y, x, -w, c, 0, 0));
-    }
+    edge.push_back({.from = x, .to = y, .cost = w, .cap = c});
   }
   if (excess[1] & 1) {
     excess[1]--;
@@ -48,18 +37,24 @@ int main() {
     }
     v /= 2;
   }
-  auto res = maxflow::feasiflow(edge, excess, 1, n, true, true, 0);
-  if (!res) {
-    puts("Impossible");
-    return 0;
+  for (int i = 1; i <= n; i++) {
+    if (excess[i] > 0)
+      edge.push_back({.from = n + 1, .to = i, .cost = 0, .cap = excess[i]});
+    if (excess[i] < 0)
+      edge.push_back({.from = i, .to = n + 2, .cost = 0, .cap = -excess[i]});
   }
-  auto [detf, detc] = *res;
+  edge.push_back({.from = n, .to = 1, .cost = 0, .cap = inf_flow});
+  maximum_flow(edge, n + 1, n + 2);
+  edge.pop_back();
+  for (int i = m; i < edge.size(); i++)
+    if (edge[i].flow != edge[i].cap) {
+      puts("Impossible");
+      return 0;
+    }
+  edge.resize(m);
   puts("Possible");
-  flow += detf;
-  totc += detc;
-  for (int i = 0; i < edge.size(); i++)
-    printf("%lld ",
-           (flg2[i] ? edge[i].flow : edge[i].cap - edge[i].flow) * 2 + flg[i]);
+  edge.pop_back();
+  for (int i = 0; i < m; i++) printf("%lld ", edge[i].flow * 2 + flg[i]);
   puts("");
   return 0;
 }
