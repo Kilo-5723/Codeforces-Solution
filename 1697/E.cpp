@@ -22,9 +22,11 @@ cplx operator-(const cplx &a, const cplx &b) { return {a.x - b.x, a.y - b.y}; }
 int abs(const cplx &a) { return abs(a.x) + abs(a.y); }
 void dfs(int u, int d, int n, const vector<cplx> &a, vector<bool> &vis,
          vector<int> &arr) {
+  if (vis[u]) return;
   vis[u] = true;
   for (int v = 0; v < n; v++)
     if (!vis[v] && abs(a[v] - a[u]) == d) dfs(v, d, n, a, vis, arr);
+  arr.push_back(u);
 }
 vector<ll> fact, ifac;
 ll memdp(int p, int n, int m, const vector<int> &a, vector<vector<ll>> &dp) {
@@ -52,19 +54,22 @@ int main() {
          return abs(a[i1] - a[j1]) < abs(a[i2] - a[j2]);
        });
   vector<int> s;
-  for (auto [i, j] : que)
-    if (!vis[i] && !vis[j]) {
-      vector<int> arr;
-      dfs(i, abs(a[i] - a[j]), n, a, vis, arr);
-      bool flg = true;
-      for (auto u : arr)
-        for (auto v : arr)
-          if (u != v && abs(a[u] - a[v]) != abs(a[i] - a[j])) flg = false;
-      for (auto u : arr)
-        for (int v = 0; v < n; v++)
-          if (u != v && abs(a[v] - a[u]) < abs(a[i] - a[j])) flg = false;
-      if (flg) s.push_back(arr.size());
-    }
+  int las = -1;
+  for (auto [i, j] : que) {
+    vector<int> arr;
+    auto d = abs(a[i] - a[j]);
+    if (d != las) vis.assign(n, false);
+    las = d;
+    dfs(i, abs(a[i] - a[j]), n, a, vis, arr);
+    bool flg = true;
+    for (auto u : arr)
+      for (auto v : arr)
+        if (u != v && abs(a[u] - a[v]) != d) flg = false;
+    for (auto u : arr)
+      for (int v = 0; v < n; v++)
+        if (u != v && abs(a[v] - a[u]) < d) flg = false;
+    if (flg && arr.size()) s.push_back(arr.size());
+  }
   fact.resize(n + 1);
   fact[0] = 1;
   for (int i = 1; i <= n; i++) fact[i] = fact[i - 1] * i % mod;
@@ -74,7 +79,6 @@ int main() {
   int m = n;
   for (auto v : s) m -= v;
   vector dp(n + 1, vector<ll>(n + 1, -1));
-  for (auto v : s) cout << v << ' ';
   printf("%lld\n", memdp(0, n, m, s, dp));
   return 0;
 }
