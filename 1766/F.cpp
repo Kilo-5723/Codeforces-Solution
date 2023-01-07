@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <iostream>
+#include <vector>
 
 #include "../template/graph/costflow.h"
 
