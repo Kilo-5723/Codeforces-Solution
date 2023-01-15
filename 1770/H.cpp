@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdio>
 #include <iostream>
 #include <vector>
@@ -5,30 +6,38 @@ using namespace std;
 vector<vector<pair<int, int>>> solve(vector<int> a) {
   int n = a.size();
   vector<vector<pair<int, int>>> res(n);
-  for (int i = 0; i < n; i++) {
-    for (int j = i; j; j--)
-      if (a[j - 1] > a[j]) {
-        res[a[j - 1]].push_back({i - j - 1, 1});
-        res[a[j]].push_back({i - j, -1});
-        cout << a[j - 1] << ' ' << i << ' ' << j << ' ' << i - j << ' ' << 1
-             << endl;
-        cout << a[j] << ' ' << i << ' ' << j << ' ' << i - j + 1 << ' ' << -1
-             << endl;
-        swap(a[i - 1], a[j]);
-      }
+  vector<int> ord;
+  for (int i = n - 1; i >= 0; i--) {
+    if (a[i] < i) {
+      ord.push_back(i);
+      for (int p = ord.size() - 1; p; p--)
+        if (a[ord[p]] < a[ord[p - 1]]) swap(ord[p], ord[p - 1]);
+      continue;
+    }
+    for (auto j : ord) {
+      if (a[j] == j) continue;
+      if (a[i] == i) break;
+      // for (int k = i, j = i + 1; a[i] > i && j < n; j++)
+      int p = 0;
+      if (res[j].size()) p = max(p, res[j].back().first);
+      if (res[i].size()) p = max(p, res[i].back().first);
+      res[j].push_back({p, a[i] - a[j]});
+      res[i].push_back({p + 1, a[j] - a[i]});
+      swap(a[j], a[i]);
+    }
   }
   return res;
 }
 vector<pair<int, int>> path(vector<pair<int, int>> a, int v, int n) {
   vector<pair<int, int>> res;
   reverse(a.begin(), a.end());
-  for (int i = 0; i <= n; i++) {
-    res.push_back({i, v});
+  for (int i = 0; i < n; i++) {
     while (a.size() && i == a.back().second) {
       v += a.back().second;
       res.push_back({i, v});
       a.pop_back();
     }
+    res.push_back({i, v});
   }
   return res;
 }
