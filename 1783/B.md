@@ -4,6 +4,8 @@ Constructive Problem.
 
 ## Problem Statement
 
+In a matrix, we are interested in the diffrenece bewteen side-adjacent elements.
+
 Fill an $n\times n$ matrix by numbers from $1$ to $n^2$ that maximizes the number of different numbers appear in the difference between side-adjacent elements
 
 ## Observation

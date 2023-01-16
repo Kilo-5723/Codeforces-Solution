@@ -2,14 +2,22 @@
 
 ## Problem A
 
-Constructive problem.
+Constructive Problem.
 
 [Solution](A.md)
 
 ## Problem B
 
-Constructive problem.
+Constructive Problem.
 
-[Solution](B.md)
+No solution yet.
+<!-- [Solution](B.md) -->
+
+## Problem C
+
+Greedy Algorithm.
+
+No solution yet.
+<!-- [Solution](B.md) -->
 
 
