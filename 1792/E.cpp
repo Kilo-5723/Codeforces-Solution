@@ -36,21 +36,19 @@ vector<int> decomp(ll n) {
     }
   return a;
 }
-vector<ll> res;
-void divs(vector<int> a, ll lim) {
-  res.clear();
+vector<ll> divs(vector<int> a) {
+  vector<ll> res;
   res.push_back(1);
   for (int i = 0; i < a.size(); i++) {
     ll mul = 1;
     int n = res.size();
     for (int j = 0; j < a[i]; j++) {
       mul *= p[i];
-      for (int k = 0; k < n; k++)
-        if (res[k] * mul <= lim) res.push_back(res[k] * mul);
+      for (int k = 0; k < n; k++) res.push_back(res[k] * mul);
     }
   }
+  return res;
 }
-unordered_map<ll, int> arr;
 int main() {
   int tt;
   scanf("%d", &tt);
@@ -58,30 +56,25 @@ int main() {
     int n, m1, m2;
     scanf("%d%d%d", &n, &m1, &m2);
     init(n, m1, m2);
-    auto arr = decomp(1ll * m1 * m2);
-    divs(arr, n);
-    auto d = res;
-    sort(d.begin(), d.end());
-    reverse(d.begin(), d.end());
-    divs(arr, 2e18);
-    auto a = res;
-    int cnt = 0, tot = 0;
-    for (auto v : a) {
+    auto fac = decomp(1ll * m1 * m2);
+    auto arr = divs(fac);
+    map<ll, ll> res;
+    for (auto v : arr) {
       if (v <= n) {
-        cnt++;
-        tot ^= 1;
+        res[v] = 1;
         continue;
       }
-      for (auto k : d) {
-        if (v / k > n) break;
-        if (!(v % k)) {
-          cnt++;
-          tot ^= (v / k);
-          break;
-        }
-      }
+      res[v] = inf;
+      for (auto k : p)
+        if (!(v % k)) res[v] = min(res[v], res[v / k] * k);
     }
-    printf("%d %d\n", cnt, tot);
+    int cnt = 0, ans = 0;
+    for (auto [k, v] : res)
+      if (v <= n) {
+        cnt++;
+        ans ^= v;
+      }
+    printf("%d %d\n", cnt, ans);
   }
   return 0;
 }

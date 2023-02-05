@@ -7,12 +7,13 @@ int main() {
   while (tt--) {
     int n;
     scanf("%d", &n);
-    if ((n & 1) || (n & (n >> 1))) {
-      puts("-1");
-      continue;
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+      int t;
+      scanf("%d", &t);
+      sum += t;
     }
-    n /= 2;
-    printf("%d %d\n", n * 3, n);
+    printf("%d\n", sum == n ? n - 2 : sum + 2);
   }
   return 0;
 }
